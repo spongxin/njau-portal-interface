@@ -56,13 +56,18 @@ class Auth(object):
             'lt': ''
         }
 
+    def portal_user(self):
+        """查询验证结果与个人信息"""
+        content = self.client.get(url=UrlConfig.portal_user_url % self._current)
+        return content.json()
+
     def login(self, captcha='') -> dict:
         """账号登录"""
         params = self.generate_form(captcha)
         self.client.post(url=UrlConfig.portal_login_url, data=params)
         self.client.get(url=UrlConfig.portal_login_service_url)
-        content = self.client.get(url=UrlConfig.portal_user_url % self._current)
-        return content.json()
+        content = self.portal_user()
+        return content
 
 
 class AsyncAuth(Auth):
@@ -108,9 +113,13 @@ class AsyncAuth(Auth):
             'lt': ''
         }
 
+    async def async_portal_user(self):
+        content = await self.async_client.get(url=UrlConfig.portal_user_url % self._current)
+        return content.json()
+
     async def async_login(self, captcha='') -> dict:
         params = await self.async_generate_form(captcha)
         await self.async_client.post(url=UrlConfig.portal_login_url, data=params),
         await self.async_client.get(url=UrlConfig.portal_login_service_url)
-        content = await self.async_client.get(url=UrlConfig.portal_user_url % self._current)
-        return content.json()
+        content = await self.async_portal_user()
+        return content
