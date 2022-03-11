@@ -1,0 +1,7 @@
+urllib3==1.26.8
+httpx==0.22.0
+Pillow==9.0.1
+lxml==4.8.0
+bs4==0.0.1
+beautifulsoup4==4.10.0
+pycryptodome==3.14.1
