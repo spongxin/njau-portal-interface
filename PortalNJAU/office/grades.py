@@ -1,5 +1,5 @@
-from portal.config import UrlConfig
-from portal.auth import Auth, AsyncAuth
+from ..config import UrlConfig
+from ..auth import Auth, AsyncAuth
 from bs4 import BeautifulSoup
 
 

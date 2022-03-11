@@ -5,8 +5,8 @@ import time
 from io import BytesIO
 from PIL import Image
 from bs4 import BeautifulSoup
-from portal.config import UrlConfig
-from portal.encrypt import encrypt
+from .config import UrlConfig
+from .encrypt import encrypt
 
 
 class Auth(object):
