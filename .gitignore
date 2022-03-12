@@ -1,6 +1,5 @@
 .idea/
 venv/
-build/
 __pycache__/
 .pypirc
 test.py

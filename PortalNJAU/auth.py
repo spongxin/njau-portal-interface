@@ -32,7 +32,7 @@ class Auth(object):
         return check_captcha_content.json()
 
     def get_captcha(self) -> Image:
-        """获取登录验证码"""
+        """获取登录验证码（PIL.Image）"""
         captcha_url = UrlConfig.portal_captcha_url + "?%s" % self._current
         captcha_content = self.client.get(captcha_url)
         captcha = Image.open(BytesIO(captcha_content.iter_bytes().__next__()))
