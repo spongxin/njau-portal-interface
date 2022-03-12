@@ -6,7 +6,6 @@ setup(
     version='0.1.0',
     packages=find_packages(),
     install_requires=[
-        "urllib3==1.26.8",
         "httpx==0.22.0",
         "Pillow==9.0.1",
         "lxml==4.8.0",
