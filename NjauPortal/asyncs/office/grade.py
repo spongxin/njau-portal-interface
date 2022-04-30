@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 from NjauPortal.config import UrlConfig
 from NjauPortal.office.grades import Grade
-from NjauPortal.Async.auth import AsyncAuth
+from NjauPortal.asyncs.auth import AsyncAuth
 
 
 class AsyncGrade:
