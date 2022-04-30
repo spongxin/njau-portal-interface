@@ -1,6 +1,6 @@
-from ..config import UrlConfig
-from ..auth import Auth, AsyncAuth
 from bs4 import BeautifulSoup
+from NjauPortal.auth import Auth
+from NjauPortal.config import UrlConfig
 
 
 class Exam(object):
@@ -34,19 +34,3 @@ class Exam(object):
                 info[keys[i]] = tds[i].text
             datalist.append(info)
         return datalist
-
-
-class AsyncExam(object):
-    def __init__(self, auth: AsyncAuth):
-        self.auth = auth
-
-    async def async_semester_exam(self, semester) -> list:
-        """查询指定学期考试安排"""
-        await self.auth.async_client.get(url=UrlConfig.jw_xsks_url)
-        content = await self.auth.async_client.post(
-            url=UrlConfig.jw_exam_detail_url,
-            data={'xqlbmc': '', 'xnxqid': semester}
-        )
-        soup = BeautifulSoup(content.content, 'lxml')
-        return Exam.exams_datalist_parser(soup)
-
